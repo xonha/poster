@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hx-indicator {
+  display: none;
+}
+.hx-indicator.htmx-request {
+  display: inline;
+}
+.hx-indicator-swap {
+  display: inline;
+}
+.hx-indicator-swap.htmx-request {
+  display: none;
+}

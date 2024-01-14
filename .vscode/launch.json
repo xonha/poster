@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FastAPI",
+            "type": "python",
+            "cwd": "${workspaceFolder}",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env", // Optional: If you have environment variables in a file
+            "program": "${workspaceFolder}/debug.py",
+        }
+    ]
+}

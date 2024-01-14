@@ -1,0 +1,51 @@
+{% extends "/layout.html" %} {% block body %}
+<!--  -->
+<nav
+  class="h-[theme(spacing.h-navbar)] w-full fixed flex border-b border-zinc-700"
+  id="navbar"
+>
+  <div
+    class="bg-green-900 w-[theme(spacing.w-sidebar)] h-full"
+    id="navbar-logo"
+  >
+    Logo
+  </div>
+  <div
+    class="flex flex-row items-center justify-between flex-grow px-[100px]"
+    id="navbar-content"
+  >
+    <div class="flex-grow">
+      <input
+        class="w-[478px] py-2 px-4 bg-zinc-800 border border-zinc-700 rounded-lg focus:outline-none focus:border-blue-300 text-white"
+        type="search"
+        placeholder="Search for songs, artists, albums"
+      />
+    </div>
+    <div class="bg-purple-950 grow">Profile</div>
+  </div>
+</nav>
+<div class="h-[theme(spacing.h-navbar)] w-full" id="navbar-spacer"></div>
+
+<div>
+  <table class="table-auto">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Name</th>
+        <th class="px-4 py-2">Age</th>
+        <th class="px-4 py-2">Job</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in range(0, 100) %}
+      <tr>
+        <td class="border px-4 py-2">asdf</td>
+        <td class="border px-4 py-2">asdf</td>
+        <td class="border px-4 py-2">adsfasdf</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!--  -->
+{% endblock body %}
