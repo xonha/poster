@@ -24,4 +24,5 @@ jobs:
 
       - name: Deploy
         run: |
-          ~/.detaspace/bin/space push --id ${{ secrets.DETA_PROJECT_ID }}
+          ~/.detaspace/bin/space link --id ${{ secrets.DETA_PROJECT_ID }}
+          ~/.detaspace/bin/space push
