@@ -13,12 +13,19 @@ router = APIRouter()
 yt = YTMusic()
 
 
+def secondsToMinutes(seconds: int) -> str:
+    minutes = seconds // 60
+    seconds = seconds % 60
+    return f"{minutes}:{seconds}"
+
+
 class Album(BaseModel):
     title: str
     artist: str
     year: int
     cover_url: str
     duration: int
+    duration_minutes: str
     tracks: list[dict[str, Any]]
 
 
@@ -50,11 +57,12 @@ def home(
         album_id = request.query_params["browseId"]
         album_raw = yt.get_album(album_id)
         album = Album(
-            title=album_raw["title"].upper(),
+            title=album_raw["title"].upper().split("(")[0],
             artist=album_raw["artists"][0]["name"],
             year=album_raw["year"],
             cover_url=album_raw["thumbnails"][-1]["url"],
             duration=album_raw["duration_seconds"],
+            duration_minutes=secondsToMinutes(album_raw["duration_seconds"]),
             tracks=removeFeatFromTracks(album_raw["tracks"]),
         )
 
@@ -66,11 +74,12 @@ def home(
     albumId = search_results[0]["browseId"]
     album_raw = yt.get_album(albumId)
     album = Album(
-        title=album_raw["title"].upper(),
+        title=album_raw["title"].upper().split("(")[0],
         artist=album_raw["artists"][0]["name"],
         year=album_raw["year"],
         cover_url=album_raw["thumbnails"][-1]["url"],
         duration=album_raw["duration_seconds"],
+        duration_minutes=secondsToMinutes(album_raw["duration_seconds"]),
         tracks=removeFeatFromTracks(album_raw["tracks"]),
     )
 

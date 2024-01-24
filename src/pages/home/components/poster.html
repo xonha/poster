@@ -16,14 +16,14 @@
         </ul>
 
         <div>
-            <div class="flex flex-col items-end pb-6" id="release-date">
-                <h3 class="font-normal text-xl">Release Date</h3>
-                <span>December 9, 2016</span>
+            <div class="flex flex-col items-end pb-6" id="release-year">
+                <h3 class="font-normal text-xl">Release Year</h3>
+                <span>{{ album.year }}</span>
             </div>
 
             <div class="flex flex-col items-end" id="album-release">
                 <h3 class="font-normal text-xl">Album Length</h3>
-                <span>68:00</span>
+                <span>{{ album.duration_minutes }}</span>
             </div>
 
         </div>
