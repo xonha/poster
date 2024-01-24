@@ -12,15 +12,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build
-        run: |
-          pip install pytailwindcss
-          tailwindcss -i tailwind.styles.css -o src/public/styles.css --minify
-
       - name: Setup
         run: |
           curl -fsSL https://deta.space/assets/space-cli.sh | sh
           echo ${{ secrets.DETA_TOKEN }} | ~/.detaspace/bin/space login --with-token
+
+      - name: Build
+        run: |
+          pip install pytailwindcss
+          tailwindcss -i tailwind.styles.css -o src/public/styles.css --minify
 
       - name: Deploy
         run: |
