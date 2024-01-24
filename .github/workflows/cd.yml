@@ -1,4 +1,4 @@
-name: Deploy to Deta Space
+name: Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  push-to-space:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,6 +20,7 @@ jobs:
       - name: Setup Space CLI
         run: |
           curl -fsSL https://deta.space/assets/space-cli.sh | sh
+          export PATH="/home/runner/.detaspace/bin:$PATH"
           space login --with-token ${{ secrets.DETA_TOKEN }}
 
       - name: Deploy
