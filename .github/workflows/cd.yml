@@ -20,9 +20,8 @@ jobs:
       - name: Setup
         run: |
           curl -fsSL https://deta.space/assets/space-cli.sh | sh
-          export PATH="/home/runner/.detaspace/bin:$PATH"
-          echo ${{ secrets.DETA_TOKEN }} | space login --with-token
+          echo ${{ secrets.DETA_TOKEN }} | ~/.detaspace/bin/space login --with-token
 
       - name: Deploy
         run: |
-          space push
+          ~/.detaspace/bin/space push
