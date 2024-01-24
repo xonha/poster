@@ -1,51 +1,43 @@
-{% extends "/layout.html" %} {% block body %}
+{% extends '/layout.html' %} {% block body %}
 <!--  -->
-<nav
-  class="h-[theme(spacing.h-navbar)] w-full fixed flex border-b border-zinc-700"
-  id="navbar"
->
-  <div
-    class="bg-green-900 w-[theme(spacing.w-sidebar)] h-full"
-    id="navbar-logo"
-  >
-    Logo
-  </div>
-  <div
-    class="flex flex-row items-center justify-between flex-grow px-[100px]"
-    id="navbar-content"
-  >
-    <div class="flex-grow">
-      <input
-        class="w-[478px] py-2 px-4 bg-zinc-800 border border-zinc-700 rounded-lg focus:outline-none focus:border-blue-300 text-white"
-        type="search"
-        placeholder="Search for songs, artists, albums"
-      />
+{% include 'home/components/sidebar.html' %}
+
+<div class="pl-[theme(spacing.w-sidebar)]">
+  <div class="p-4 flex justify-center">
+    <div class="bg-white h-[297mm] w-[210mm] text-black relative" id="poster">
+      <img class="w-full" src="{{ album.cover_url }}">
+      <div class="flex flex-col p-12 pt-[200px] z-10 h-[60%] w-full absolute text-white bottom-0"
+        style="background-image: linear-gradient(to top, black 0%, black 65%, transparent 100%)">
+
+        <div>
+          <h1 class="font-extrabold text-4xl">{{ album.title }}</h1>
+          <h2 class="font-normal text-2xl">{{ album.artist }}</h2>
+          <hr class="my-6 h-3 border-t-4 rounded-sm">
+        </div>
+
+        <div class="flex gap-10 ml-6 h-[270px]">
+          <ul class="list-decimal list-outside h-full flex flex-grow flex-col flex-wrap gap-x-10 gap-y-[2px]">
+            {% for track in album.tracks %}
+            <li>{{track.title}}</li>
+            {% endfor %}
+          </ul>
+
+          <div>
+            <div class="flex flex-col items-end pb-6" id="release-date">
+              <h3 class="font-normal text-xl">Release Date</h3>
+              <span>December 9, 2016</span>
+            </div>
+
+            <div class="flex flex-col items-end" id="album-release">
+              <h3 class="font-normal text-xl">Album Length</h3>
+              <span>68:00</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="bg-purple-950 grow">Profile</div>
   </div>
-</nav>
-<div class="h-[theme(spacing.h-navbar)] w-full" id="navbar-spacer"></div>
-
-<div>
-  <table class="table-auto">
-    <thead>
-      <tr>
-        <th class="px-4 py-2">Name</th>
-        <th class="px-4 py-2">Age</th>
-        <th class="px-4 py-2">Job</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for i in range(0, 100) %}
-      <tr>
-        <td class="border px-4 py-2">asdf</td>
-        <td class="border px-4 py-2">asdf</td>
-        <td class="border px-4 py-2">adsfasdf</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
 </div>
-
 <!--  -->
-{% endblock body %}
+{% endblock %}

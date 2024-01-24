@@ -6,20 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // sans: ["Inter", "sans-serif"],
-        // montserrat: ["Montserrat", "sans-serif"],
-        // mohave: ["Mohave", "sans-serif"],
-        // lato: ["Lato", "sans-serif"],
-        // gilroy: ["Gilroy", "sans-serif"],
-      },
-      fontSize: {
-        "leading-4": [
-          "0.75rem",
-          {
-            lineHeight: "1rem",
-            fontWeight: "400",
-          },
-        ],
+        sans: ["Roboto", "sans-serif"],
       },
       colors: {
         "base-background": "#FFF",
@@ -55,7 +42,7 @@ module.exports = {
       },
       spacing: {
         "h-navbar": "65px",
-        "w-sidebar": "240px",
+        "w-sidebar": "400px",
       },
       backgroundColor: {
         "transparent-blue": "rgba(2, 20, 65, 0.70)",
