@@ -1,41 +1,17 @@
 {% extends '/layout.html' %} {% block body %}
 <!--  -->
-{% include 'home/components/sidebar.html' %}
+<aside class="fixed h-full w-[theme(spacing.w-sidebar)] border-zinc-700 border-r px-4 flex flex-col overflow-y-auto">
+  <input
+    class="w-full py-2 px-4 my-4 bg-zinc-800 border border-zinc-700 rounded-lg focus:outline-none focus:border-blue-300 text-white"
+    type="search" placeholder="Search for albums, songs, etc..." hx-get="/search" hx-trigger="keyup changed delay:0.5s"
+    hx-include="[name='search']" name="search" id="search" hx-swap="innerHTML" hx-target="#search-results" />
+  <div id="search-results"></div>
+</aside>
 
 <div class="pl-[theme(spacing.w-sidebar)]">
   <div class="p-4 flex justify-center">
     <div class="bg-white h-[297mm] w-[210mm] text-black relative" id="poster">
-      <img class="w-full" src="{{ album.cover_url }}">
-      <div class="flex flex-col p-12 pt-[200px] z-10 h-[60%] w-full absolute text-white bottom-0"
-        style="background-image: linear-gradient(to top, black 0%, black 65%, transparent 100%)">
-
-        <div>
-          <h1 class="font-extrabold text-4xl">{{ album.title }}</h1>
-          <h2 class="font-normal text-2xl">{{ album.artist }}</h2>
-          <hr class="my-6 h-3 border-t-4 rounded-sm">
-        </div>
-
-        <div class="flex gap-10 ml-6 h-[270px]">
-          <ul class="list-decimal list-outside h-full flex flex-grow flex-col flex-wrap gap-x-10 gap-y-[2px]">
-            {% for track in album.tracks %}
-            <li>{{track.title}}</li>
-            {% endfor %}
-          </ul>
-
-          <div>
-            <div class="flex flex-col items-end pb-6" id="release-date">
-              <h3 class="font-normal text-xl">Release Date</h3>
-              <span>December 9, 2016</span>
-            </div>
-
-            <div class="flex flex-col items-end" id="album-release">
-              <h3 class="font-normal text-xl">Album Length</h3>
-              <span>68:00</span>
-            </div>
-
-          </div>
-        </div>
-      </div>
+      {% include 'home/components/poster.html' %}
     </div>
   </div>
 </div>

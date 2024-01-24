@@ -1,0 +1,11 @@
+{% for result in search_results %}
+<div class="flex flex-row pb-4" hx-get="/" hx-target="#poster" hx-trigger="click" hx-swap="innerHTML"
+    hx-include='#browseId{{ loop.index }}'>
+    <img class=" w-20 h-20" src=' {{ result["thumbnails"][-1]["url"] }}'>
+    <div class="flex flex-col justify-center p-3">
+        <span>{{ result.title.upper() }}</span>
+        <input type="hidden" id="browseId{{ loop.index }}" name="browseId" value="{{ result.browseId }}">
+        <span>{{ result['artists'][0]['name'] }}</span>
+    </div>
+</div>
+{% endfor %}
