@@ -17,11 +17,12 @@ jobs:
           pip install pytailwindcss
           tailwindcss -i tailwind.styles.css -o src/public/styles.css --minify
 
-      - name: Setup Space CLI
+      - name: Setup
         run: |
           curl -fsSL https://deta.space/assets/space-cli.sh | sh
-          /home/runner/.detaspace/bin/space login --with-token ${{ secrets.DETA_TOKEN }}
+          export PATH="/home/runner/.detaspace/bin:$PATH"
+          echo ${{ secrets.DETA_TOKEN }} | space login --with-token
 
       - name: Deploy
         run: |
-          /home/runner/.detaspace/bin/space push
+          space push
