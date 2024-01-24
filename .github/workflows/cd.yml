@@ -24,4 +24,5 @@ jobs:
 
       - name: Deploy
         run: |
+          ~/.detaspace/bin/space new
           ~/.detaspace/bin/space push
