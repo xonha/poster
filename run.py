@@ -12,7 +12,7 @@ def main():
     workers = int(os.environ.get("FASTAPI_WORKERS", "4"))
 
     subprocess.run(tailwind_build_css_command.split())
-    uvicorn.run("src.main:app", host=host, port=port, workers=workers)
+    uvicorn.run("src.main:api", host=host, port=port, workers=workers)
 
 
 if __name__ == "__main__":

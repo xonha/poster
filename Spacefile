@@ -6,4 +6,4 @@ micros:
     primary: true
     src: ./
     engine: python3.9
-    run: uvicorn src.main:app --workers=4
+    run: uvicorn src.main:api --workers=4

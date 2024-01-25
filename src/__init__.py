@@ -4,7 +4,7 @@ __dotenv.load_dotenv(__dotenv.find_dotenv())
 
 from fastapi.templating import Jinja2Templates as __Jinja2Templates
 
-templates = __Jinja2Templates(directory="src/pages")
+templates = __Jinja2Templates(directory="src/app")
 
 tailwind_build_css_command = (
     "tailwindcss -i tailwind.styles.css -o src/public/styles.css --minify"

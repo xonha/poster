@@ -17,7 +17,7 @@ def main():
     port = int(os.environ.get("FASTAPI_PORT", "8000"))
 
     Thread(target=run_tailwind).start()
-    uvicorn.run("src.main:app", host=host, port=port, reload=True)
+    uvicorn.run("src.main:api", host=host, port=port, reload=True)
 
 
 if __name__ == "__main__":
