@@ -1,7 +1,7 @@
 from fastapi import FastAPI, staticfiles
 from fastapi.middleware.cors import CORSMiddleware
 
-from src import api, pages
+from src import pages
 
 app = FastAPI()
 
@@ -16,4 +16,3 @@ app.add_middleware(
 app.mount("/public", staticfiles.StaticFiles(directory="src/public"), name="public")
 
 app.include_router(pages.router)
-app.include_router(api.router)
