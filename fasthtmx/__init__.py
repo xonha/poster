@@ -1,0 +1,1 @@
+from .fasthtmx import HTMXRouter
