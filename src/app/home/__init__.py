@@ -1,23 +1,21 @@
-from typing import Optional
-
-from fastapi import Header, Request
+from fastapi import Request
 from ytmusicapi import YTMusic
 
-from fasthtmx import HTMXRouter
+from fasthtmx import HXRouter
+from fasthtmx.headers import HXRequestHeaders
 from src import templates
+from src.controllers.youtube import search_album
 from src.models.album import Album
 from src.utils.functions import removeFeatFromTracks, secondsToMinutes
 
-router = HTMXRouter(templates)
+router = HXRouter(templates)
 
 yt = YTMusic()
 
 
 @router.hx_get("/search", "home/components/search_results.html")
 def search(request: Request, search: str):
-    search_results = yt.search(search, filter="albums")
-    context = {"search_results": search_results}
-    return context
+    return search_album(search)
 
 
 @router.hx_get(
@@ -26,11 +24,8 @@ def search(request: Request, search: str):
     "home/components/poster.html",
     enable_json_route=False,
 )
-def home(
-    request: Request,
-    hx_request: Optional[str] = Header(None),
-):
-    if hx_request:
+def home(request: Request):
+    if request.headers.get(HXRequestHeaders.hx_request):
         album_id = request.query_params["browseId"]
         album_raw = yt.get_album(album_id)
         album = Album(
